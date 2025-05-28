@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tilt+Neon&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lobster', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    height: 100vh;
+}
+
+.back-image {
+    background-image: url('img/LudoBack.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 7vh;
+    background: linear-gradient(90deg, rgba(19, 1, 21, 0.9), rgba(64, 3, 85, 0.8), rgba(19, 1, 21, 0.9));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.5), 0 0 15px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+    text-shadow:
+            0 0 5px #fff,
+            0 0 10px #ff0099,
+            0 0 20px #ff00ff,
+            0 0 40px #9900cc,
+            0 0 80px #7300e6;
+    font-family: 'Tilt Neon', sans-serif;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    color: #ffff;
+    text-shadow:
+            0 0 10px #fff,
+            0 0 20px #ff0066,
+            0 0 40px #ff00ff,
+            0 0 80px #cc00ff;
+}
+
+.menu {
+    font-size: 36px;
+    cursor: pointer;
+    color: #f8a9ff;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-shadow: 0 0 10px #f8a9ff, 0 0 20px #ff00ff, 0 0 30px #cc00ff;
+}
+
+.menu:hover {
+    transform: rotate(10deg) scale(1.4);
+    color: #ffffff;
+    text-shadow: 0 0 15px #fff, 0 0 30px #ff33ff, 0 0 60px #e600e6;
+}
+
+header nav ul {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+header nav ul li {
+    position: relative;
+}
+
+header nav ul li a {
+    padding: 10px 40px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow:
+            0 0 5px #fff,
+            0 0 10px #ff00ff,
+            0 0 15px #b300ff,
+            0 0 20px #7300e6;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(19, 1, 21, 0.5);
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+    border-color: rgba(255, 0, 255, 0.7);
+    text-shadow:
+            0 0 10px #ff0099,
+            0 0 20px #ff33ff,
+            0 0 30px #cc00ff;
+}
+
+
+.pop-up-menu {
+    position: absolute;
+    display: flex;
+    background: linear-gradient(135deg, rgba(19, 1, 21, 0.9), rgba(50, 0, 100, 0.9));
+    top: 60px;
+    right: 20px;
+    flex-direction: column;
+    font-size: 18px;
+    padding: 20px;
+    row-gap: 12px;
+    border-radius: 20px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(200, 0, 255, 0.7);
+    border: 2px solid rgba(200, 0, 255, 0.5);
+}
+
+.pop-up-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pop-up-menu a {
+    color: #fff;
+    font-weight: 400;
+    text-shadow:
+            0 0 7px #fff,
+            0 0 10px #ed1111,
+            0 0 21px #fff,
+            0 0 42px #dd00ff,
+            0 0 82px #b700ff,
+            0 0 92px #b700ff,
+            0 0 102px #7300ff,
+            0 0 151px #aa00ff;
+    display: block;
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.8), rgba(50, 0, 100, 0.8));
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.2s ease, background 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pop-up-menu a:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, rgba(255, 50, 255, 1), rgba(70, 10, 130, 1));
+}
+
+
+/* Стилізація для всього поп-апа */
+.pop-up {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: transparent; /* Темно-фіолетове напівпрозоре тло */
+    z-index: 2;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+/* Активний стан поп-апа */
+.pop-up.active {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+}
+
+/* Контейнер поп-апа */
+.pop-up-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Основний блок поп-апа */
+.pop-up-body {
+    margin: auto;
+    width: 480px;
+    background-color: rgba(50, 0, 70, 0.95); /* Темно-фіолетовий фон */
+    border-radius: 20px;
+    text-align: center;
+    padding: 50px 40px;
+    position: relative;
+    box-shadow:
+            0 0 10px rgba(255, 0, 255, 0.3),
+            0 0 20px rgba(255, 0, 255, 0.4),
+            0 0 30px rgba(173, 0, 255, 0.6);
+}
+
+/* Заголовок */
+.pop-up-body p {
+    font-size: 26px;
+    font-weight: 400;
+    color: #e7cbfd; /* Світло-фіолетовий */
+    margin-bottom: 25px;
+    text-shadow: 0 0 5px #ff66cc, 0 0 10px #a64dff;
+    transition: 0.2s ease-in-out;
+}
+
+.pop-up p:hover{
+    transform: scale(1.01);
+    cursor: default;
+}
+
+/* Стилізація інпутів та текстової області */
+.pop-up-body input,
+.pop-up-body textarea {
+    display: block;
+    margin: 20px auto;
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(70, 0, 100, 0.8); /* Темніший фіолетовий фон для інпутів */
+    border-radius: 10px;
+    border: 2px solid rgba(255, 102, 204, 0.5); /* М'який рожевий акцент */
+    font-size: 18px;
+    color: #ffffff;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Стійке підсвічування при фокусі */
+.pop-up-body input:focus,
+.pop-up-body textarea:focus {
+    outline: none;
+    border-color: #ff66cc; /* Яскравий рожевий при фокусі */
+    box-shadow: 0 0 10px rgba(255, 102, 204, 0.7), 0 0 15px rgba(128, 0, 255, 0.5);
+}
+
+/* Кнопка */
+.pop-up-body button {
+    cursor: pointer;
+    display: block;
+    width: 220px;
+    margin: 30px auto 0 auto;
+    padding: 15px 0;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #d633ff, #8338ec);
+    box-shadow: 0 5px 15px rgba(255, 0, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pop-up-body button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(128, 0, 255, 0.6);
+}
+
+/* Кнопка закриття */
+.pop-up-close {
+    position: absolute;
+    color: #ff1a75; /* Рожевий акцент */
+    top: 15px;
+    right: 20px;
+    font-size: 26px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.pop-up-close:hover {
+    transform: rotate(90deg);
+    color: #ff66cc;
+}
+
+/* Текстова область */
+.input-text {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    resize: none;
+    background-color: rgba(70, 0, 100, 0.8);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 102, 204, 0.5);
+    color: #ffffff;
+}
+
+/* Стиль плейсхолдерів */
+.pop-up-body input::placeholder,
+textarea::placeholder {
+    color: #b3b3b3;
+    opacity: 0.8;
+}
+
+
+.container-games {
+    top: 100px;
+    width: 100%;
+    position: absolute;
+    display: flex; /* Расположить элементы в ряд */
+    justify-content: space-between; /* Пространство между карточками */
+    align-items: center; /* Выравнивание по вертикали */
+    padding: 20px; /* Внутренние отступы для контейнера */
+    background-color: transparent; /* Белый фон для разделения от остальной части сайта */
+}
+
+.game {
+    width: 330px;
+    height: 420px;
+    background-color: rgba(255, 255, 255, .65); /* Цвет карточки */
+    
+    border-radius: 10px; /* Скругленные углы */
+    display: flex;
+    justify-content: center; /* Горизонтальное выравнивание содержимого */
+    align-items: center; /* Вертикальное выравнивание содержимого */
+    font-size: 36px; /* Размер текста */
+    cursor: pointer; /* Курсор при наведении */
+    margin: 60px; /* Внешние отступы между карточками */
+    transition: 0.3s;
+    box-shadow: 
+        35px 35px 50px rgba(255, 0, 255, 0.7), /* Тень справа и снизу */
+        -35px -35px 50px rgba(170, 16, 170, 0.6); /* Тень слева и сверху */
+}
+
+
+.gameBack{
+    border-radius: 7px;
+    width: 100%;
+    height: 100%;
+}
+
+.game:hover{
+transform: scale(1.05);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container-games {
+        flex-direction: column; /* Разместить карточки в столбик на мобильных */
+        align-items: center; /* Центрировать карточки */
+    }
+    .game{
+        align-items: center;
+        height: 20vh;
+        width: 50vw;
+        margin: 20px;
+    }
+}
+
+.promo {
+    position: absolute;
+    width: 520px;
+    height: 470px;
+    background: linear-gradient(135deg, rgba(19, 1, 21, 0.95), rgba(50, 0, 100, 0.95));
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    border-radius: 25px;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(200, 0, 255, 0.8);
+    border: 3px solid rgba(200, 0, 255, 0.5);
+}
+
+.promo.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.promo h1 {
+    color: #fff;
+    font-weight: 400;
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow:
+            0 0 7px #fff,
+            0 0 10px #ed1111,
+            0 0 21px #fff,
+            0 0 42px #dd00ff,
+            0 0 82px #b700ff;
+}
+
+.promo h5 {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.promo input {
+    width: 80%;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.promo input:focus {
+    box-shadow: 0 0 15px rgba(200, 0, 255, 0.8);
+}
+
+.btn-promo {
+    font-size: 24px;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.8), rgba(50, 0, 100, 0.8));
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(200, 0, 255, 0.7);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-promo:hover {
+    transform: scale(1.02);
+    background: linear-gradient(135deg, rgba(255, 50, 255, 1), rgba(70, 10, 130, 1));
+}
+
+.btn-promo:active {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, rgba(200, 0, 255, 1), rgba(50, 0, 100, 1));
+}
+
+@media (max-width: 768px) {
+    .promo{
+        width: 60%;
+    }
+}

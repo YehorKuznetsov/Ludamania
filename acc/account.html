@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styleAcc.css">
+    <script src="scriptAcc.js" defer></script>
+    <script src="../script.js" defer></script>
+    <title>Account</title>
+</head>
+<body>
+
+    <header>
+
+        <a href="../main.html" class="logo"  title="Повернутись на головну">Ludomania</a>
+
+    </header>
+
+
+    <div class="account-container">
+        <h1 class="account-title">Мій акаунт</h1>
+        <h2 class="account-title2">Аватар</h2>
+        <div class="profile-section">
+            <img id="preview" class="preview" src="../img/Logo.png" alt="Аватар">
+            <label for="fileInput" class="custom-file-input">Завантажити фото</label>
+            <input type="file" id="fileInput" accept="image/*">
+        </div>
+        <div class="info-section">
+            <p><strong>Логін:</strong> your_username</p>
+            <p><strong>Пошта:</strong> your_email@example.com</p>
+            <p><strong>Баланс:</strong> 1000 ₴</p>
+        </div>
+        <button class="logout-button" onclick="logout()">Вийти</button>
+    </div>
+
+
+
+
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

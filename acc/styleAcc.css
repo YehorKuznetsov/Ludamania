@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tilt+Neon&display=swap');
+
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 7vh;
+    background: linear-gradient(90deg, rgba(19, 1, 21, 0.9), rgba(64, 3, 85, 0.8), rgba(19, 1, 21, 0.9));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.5), 0 0 15px rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+    text-shadow:
+            0 0 5px #fff,
+            0 0 10px #ff0099,
+            0 0 20px #ff00ff,
+            0 0 40px #9900cc,
+            0 0 80px #7300e6;
+    font-family: 'Tilt Neon', sans-serif;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    color: #ffff;
+    text-shadow:
+            0 0 10px #fff,
+            0 0 20px #ff0066,
+            0 0 40px #ff00ff,
+            0 0 80px #cc00ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lobster', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    background-image: url('../img/backAcc.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.account-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(125, 75, 200, 0.9);
+    margin: auto;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.42);
+    box-shadow: 0 0 15px 5px rgba(160, 50, 200, 0.7);
+    padding: 20px;
+
+}
+
+.account-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 4px;
+    background: linear-gradient(45deg,
+    rgba(255, 0, 255, 1),
+    rgb(255, 0, 0),
+    rgba(0, 255, 150, 1),
+    rgba(255, 255, 0, 1),
+    rgba(255, 0, 255, 1),
+    rgb(51, 5, 236)
+    );
+    background-size: 200% 200%;
+    animation: borderAnimation 4.5s infinite linear;
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+@keyframes borderAnimation {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.account-title {
+    color: #fff;
+    font-weight: 400;
+    font-size: 2rem;
+    text-shadow: 0 0 8px #fff, 0 0 20px #34055e, 0 0 40px #ff00ff, 0 0 80px #9900cc, 0 0 120px #7300e6;
+}
+
+.account-title2 {
+    color: #fff;
+    padding-top: 30px;
+    font-weight: 400;
+    font-size: 1.65rem;
+    text-shadow: 0 0 8px #fff, 0 0 20px #34055e, 0 0 40px #ff00ff, 0 0 80px #9900cc, 0 0 120px #7300e6;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.preview {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 3px solid rgba(150, 75, 230, 0.8);
+    box-shadow: 0 0 10px 3px rgba(113, 16, 232, 0.8);
+    object-fit: cover;
+    transition: 0.2s ease-in-out;
+}
+
+.preview:hover{
+    transform: scale(1.05);
+}
+
+.custom-file-input {
+    display: inline-block;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, rgba(155, 0, 255, 0.8), rgba(50, 0, 120, 0.8));
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 15px rgba(200, 0, 255, 0.6);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-input:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(255, 50, 255, 1), rgba(70, 10, 130, 1));
+}
+
+.info-section {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #fff;
+    gap: 10px;
+}
+
+.logout-button {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(145, 50, 230, 0.8), rgba(50, 20, 120, 0.9));
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 15px rgba(160, 50, 220, 0.6);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.logout-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(200, 50, 255, 1), rgba(70, 10, 150, 1));
+}
+
+/* Адаптація для мобільних пристроїв */
+@media (max-width: 768px) {
+    .account-container {
+        height: 90%;
+        width: 90%;
+        padding: 15px;
+    }
+
+    .preview {
+        width: 100px;
+        height: 100px;
+    }
+
+    .info-section {
+        font-size: 1rem;
+    }
+
+    .logout-button {
+        width: 80%;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}

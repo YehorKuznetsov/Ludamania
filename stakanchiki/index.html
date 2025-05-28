@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #game-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .cup {
+            width: 100px;
+            height: 150px;
+            background: #555;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: transform 0.3s ease, top 1s ease;
+        }
+        .hidden-item {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: gold;
+            border-radius: 50%;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+        #play-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Casino Cup Game</h1>
+    <div id="game-container">
+        <div class="cup" data-id="0">
+            <div class="hidden-item"></div>
+        </div>
+        <div class="cup" data-id="1">
+            <div class="hidden-item"></div>
+        </div>
+        <div class="cup" data-id="2">
+            <div class="hidden-item"></div>
+        </div>
+    </div>
+    <button id="play-button">Грати</button>
+    <div id="result"></div>
+
+    <script>
+        const cups = document.querySelectorAll('.cup');
+        const playButton = document.getElementById('play-button');
+        const resultDiv = document.getElementById('result');
+
+        let correctCup = Math.floor(Math.random() * 3);
+        let gameInProgress = false;
+        let balance = 100;
+
+        function updateBalance(amount) {
+            balance += amount;
+            resultDiv.textContent = `Ваш баланс: ${balance}`;
+        }
+
+        function shuffleCups() {
+            const order = [0, 1, 2];
+            for (let i = order.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [order[i], order[j]] = [order[j], order[i]];
+            }
+
+            cups.forEach((cup, index) => {
+                cup.style.order = order[index];
+            });
+        }
+
+        function startGame() {
+            if (gameInProgress || balance < 10) {
+                resultDiv.textContent = balance < 10 ? 'Недостатньо коштів для гри.' : '';
+                return;
+            }
+
+            gameInProgress = true;
+            updateBalance(-10);
+
+            resultDiv.textContent = '';
+
+            cups.forEach(cup => {
+                cup.querySelector('.hidden-item').style.display = 'none';
+                cup.style.top = '0';
+            });
+
+            correctCup = Math.floor(Math.random() * 3);
+            cups[correctCup].querySelector('.hidden-item').style.display = 'block';
+
+            let shuffleCount = 0;
+            const interval = setInterval(() => {
+                shuffleCups();
+                shuffleCount++;
+                if (shuffleCount >= 10) {
+                    clearInterval(interval);
+                    gameInProgress = false;
+                    resultDiv.textContent = 'Оберіть стаканчик';
+                }
+            }, 300);
+        }
+
+        function handleCupClick(event) {
+            if (gameInProgress) return;
+
+            const clickedCup = event.currentTarget;
+            const cupId = parseInt(clickedCup.dataset.id, 10);
+
+            cups.forEach(cup => {
+                cup.style.top = '0';
+            });
+
+            clickedCup.style.top = '-50px';
+
+            if (cupId === correctCup) {
+                updateBalance(30);
+                resultDiv.textContent = 'Виграш! +30';
+                clickedCup.querySelector('.hidden-item').style.display = 'block';
+            } else {
+                resultDiv.textContent = 'Програш!';
+                cups[correctCup].style.top = '-50px';
+            }
+        }
+
+        cups.forEach(cup => {
+            cup.addEventListener('click', handleCupClick);
+        });
+
+        playButton.addEventListener('click', startGame);
+    </script>
+</body>
+</html>

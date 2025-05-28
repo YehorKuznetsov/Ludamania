@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="favicon" href="img/Logo.png">
+    <script src="script.js" defer></script>
+    <title>Ludomania</title>
+</head>
+<body>
+
+<header>
+
+    <a href="main.html" class="logo">Ludomania</a>
+
+    <nav>
+        <ul>
+            <li><a href="#" id="btn-promo" >Промокод</a></li>
+            <li id="balance">Баланс: 1000.00</li>
+            <li><a href="login/login.html">Вхід</a></li>
+            <ion-icon name="menu" class="menu" id="btn-menu"></ion-icon>
+        </ul>
+    </nav>
+
+</header>
+
+    <div class="pop-up-menu" id="menu">
+        <a href="acc/account.html">Акаунт</a>
+        <a href="#">Поповнити</a>
+        <a href="#" id="openPopUp">Підтримка</a>
+        <a href="#">Запросити</a>
+        <a href="#">Вихід</a>
+    </div>
+
+<div class="back-image"></div>
+
+    <div class="pop-up" id="pop-up">
+        <div class="pop-up-container">
+            <div class="pop-up-body" id="pop-up-body">
+                <p>Вас Вітає Ludo-підтримка</p>
+                <form action="#">
+                    <input type="email" placeholder="Вкажіть ваш Email">
+                    <textarea class="input-text"  placeholder="Опишіть проблему або підкажіть як нам покращити продукт" cols="30" rows="10"></textarea>
+                    <button type="submit">Надіслати</button>
+                </form>
+                <div class="pop-up-close" id="pop-up-close">&#10006</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-games">
+        <a href="korobochki/korobki.html">
+            <div class="game game 1">
+                <img src="img/backKorobka.png" class="gameBack" alt="">
+            </div>
+        </a>
+        <a href="ruletka/ruletka.html">
+            <div class="game game2">
+                <img src="img/backGame.jpg" class="gameBack" alt="">
+            </div>
+        </a>
+        <a href="stakanchiki/index.html">
+            <div class="game game 3">
+                <img src="img/backGame.jpg" class="gameBack" alt="">
+            </div>
+        </a>
+    </div>
+
+    <div class="promo" id="promo">
+        <h1>Введіть промокод</h1>
+        <input type="text" placeholder="Наприклад #Ludomania">
+        <button class="btn-promo" type="submit">Використати</button>
+        <h5>Промокод можна отримати я ще не придумав</h5>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

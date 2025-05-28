@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Казино - Гра</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(5, 100px);
+            grid-template-rows: repeat(4, 100px);
+            gap: 10px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #34495e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transform: rotateY(0);
+            transition: transform 0.6s;
+        }
+
+        .box.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .balance {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .win {
+            background-color: #27ae60;
+        }
+
+        .lose {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Обери свою удачу!</h1>
+    <div class="game-board" id="gameBoard"></div>
+    <div class="balance" id="balance">Баланс: 100</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gameBoard = document.getElementById('gameBoard');
+            const balanceDisplay = document.getElementById('balance');
+            let balance = 100;
+
+            // Генеруємо випадкові виграші та програші для кожної коробки
+            const outcomes = Array.from({ length: 20 }, () => Math.random() > 0.5 ? 'win' : 'lose');
+
+            // Оновлення балансу
+            function updateBalance(amount) {
+                balance += amount;
+                balanceDisplay.textContent = `Баланс: ${balance}`;
+            }
+
+            // Обробка кліку на коробку
+            function handleBoxClick(event) {
+                const box = event.target;
+
+                if (box.classList.contains('flipped')) return; // Не даємо перевертати вдруге
+
+                box.classList.add('flipped');
+                const index = Array.from(gameBoard.children).indexOf(box);
+                const outcome = outcomes[index];
+
+                if (outcome === 'win') {
+                    box.textContent = '+30';
+                    box.classList.add('win');
+                    updateBalance(30);
+                } else {
+                    box.textContent = '-10';
+                    box.classList.add('lose');
+                    updateBalance(-10);
+                }
+            }
+
+            // Створюємо коробки
+            for (let i = 0; i < 20; i++) {
+                const box = document.createElement('div');
+                box.className = 'box';
+                box.addEventListener('click', handleBoxClick);
+                gameBoard.appendChild(box);
+            }
+        });
+    </script>
+</body>
+</html>
